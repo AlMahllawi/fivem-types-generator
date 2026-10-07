@@ -1,0 +1,126 @@
+name: 'FiveM Lua Definitions Generator'
+description: 'Automatically generates FiveM .d.lua type definitions using LuaLS'
+branding:
+  icon: 'code'
+  color: 'orange'
+
+inputs:
+  resource-path:
+    description: 'Path to the FiveM resource directory'
+    required: false
+    default: '.'
+  output-path:
+    description: 'Output directory for generated definitions'
+    required: false
+    default: './definitions'
+  resource-name:
+    description: 'Custom resource name for exports (defaults to folder name)'
+    required: false
+  luals-version:
+    description: 'Version of lua-language-server to install'
+    required: false
+    default: '3.19.1'
+  fail-on-warning:
+    description: 'Fail the action if any warnings are detected'
+    required: false
+    default: 'false'
+
+outputs:
+  warnings-count:
+    description: 'Number of warnings generated'
+    value: ${{ steps.run-generator.outputs.warnings-count }}
+  has-changes:
+    description: 'Whether new or modified definition files were generated ("true" or "false")'
+    value: ${{ steps.check-changes.outputs.has-changes }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Download & Extract lua-language-server
+      shell: bash
+      run: |
+        mkdir -p "${{ runner.temp }}/luals"
+        curl -sSL "https://github.com/LuaLS/lua-language-server/releases/download/${{ inputs.luals-version }}/lua-language-server-${{ inputs.luals-version }}-linux-x64.tar.gz" | tar -xz -C "${{ runner.temp }}/luals"
+        chmod +x "${{ runner.temp }}/luals/bin/lua-language-server"
+
+    - name: Run FiveM Lua Definitions Generator
+      id: run-generator
+      shell: bash
+      run: |
+        ARGS=("--json")
+        if [ -n "${{ inputs.resource-name }}" ]; then
+          ARGS+=("--name" "${{ inputs.resource-name }}")
+        fi
+        ARGS+=("${{ inputs.resource-path }}" "${{ inputs.output-path }}")
+        
+        OUTPUT=$("${{ runner.temp }}/luals/bin/lua-language-server" "${{ github.action_path }}/../../../generator.lua" "${ARGS[@]}" 2>/dev/null || true)
+        
+        # Extract JSON starting from the first '{'
+        JSON_STR=$(echo "$OUTPUT" | sed -n '/{/,$p')
+        
+        if [ -z "$JSON_STR" ]; then
+          echo "::error::Generator returned empty or invalid output"
+          exit 1
+        fi
+
+        # Parse with node (preinstalled on all GitHub Actions runners)
+        node -e '
+          const raw = process.argv[1];
+          let data;
+          try {
+            data = JSON.parse(raw);
+          } catch (e) {
+            console.error("::error::Failed to parse generator JSON output: " + e.message);
+            process.exit(1);
+          }
+
+          if (data.errors && data.errors.length > 0) {
+            for (const err of data.errors) {
+              console.log(`::error::${err.message}`);
+            }
+          }
+
+          if (data.warnings && data.warnings.length > 0) {
+            for (const w of data.warnings) {
+              const file = w.file || "";
+              const line = w.line || 1;
+              if (file) {
+                console.log(`::warning file=${file},line=${line}::${w.message}`);
+              } else {
+                console.log(`::warning::${w.message}`);
+              }
+            }
+          }
+
+          const warnCount = (data.warnings || []).length;
+          const errCount = (data.errors || []).length;
+          
+          const fs = require("fs");
+          if (process.env.GITHUB_OUTPUT) {
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `warnings-count=${warnCount}\n`);
+          }
+
+          if (errCount > 0) {
+            process.exit(1);
+          }
+          if ("${{ inputs.fail-on-warning }}" === "true" && warnCount > 0) {
+            console.error(`::error::Action configured to fail on warnings (${warnCount} warning(s) found).`);
+            process.exit(1);
+          }
+        ' "$JSON_STR"
+
+    - name: Check for Definition Changes
+      id: check-changes
+      shell: bash
+      run: |
+        OUTPUT_DIR="${{ inputs.output-path }}"
+        if [ -d "$OUTPUT_DIR" ]; then
+          git add -N "$OUTPUT_DIR" 2>/dev/null || true
+        fi
+        
+        STATUS=$(git status --porcelain "$OUTPUT_DIR" 2>/dev/null || true)
+        if [ -n "$STATUS" ]; then
+          echo "has-changes=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "has-changes=false" >> "$GITHUB_OUTPUT"
+        fi

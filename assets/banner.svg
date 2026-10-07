@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400" role="img" aria-label="FiveM Lua Definitions Banner">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0D18"/>
+      <stop offset="50%" stop-color="#11162B"/>
+      <stop offset="100%" stop-color="#080A12"/>
+    </linearGradient>
+
+    <!-- Outer Border Glow -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#8B5CF6" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1E2640" stroke-width="1" opacity="0.35"/>
+    </pattern>
+
+    <!-- Ambient Glows -->
+    <radialGradient id="leftGlow" cx="20%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="rightGlow" cx="80%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Text Highlight Gradient -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+
+    <!-- Icon Components Gradients -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E2337"/>
+      <stop offset="100%" stop-color="#121524"/>
+    </linearGradient>
+
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+
+    <linearGradient id="wandShaft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="45%" stop-color="#64748B"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+
+    <linearGradient id="wandTip" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="50%" stop-color="#93C5FD"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+
+    <linearGradient id="wandGrip" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2038"/>
+      <stop offset="50%" stop-color="#2D325A"/>
+      <stop offset="100%" stop-color="#141628"/>
+    </linearGradient>
+
+    <!-- Code Preview Card Gradients -->
+    <linearGradient id="codeCardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#131728" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0C0E1A" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Container Box: edge-to-edge full canvas background with no corner gaps -->
+  <rect x="0" y="0" width="1280" height="400" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="1280" height="400" fill="url(#grid)"/>
+  <rect x="0" y="0" width="1280" height="400" fill="none" stroke="url(#borderGrad)" stroke-width="2"/>
+
+  <!-- Ambient Light Orbs covering corners fully -->
+  <circle cx="240" cy="190" r="340" fill="url(#leftGlow)"/>
+  <circle cx="1060" cy="200" r="360" fill="url(#rightGlow)"/>
+
+  <!-- ================= LEFT COLUMN: HERO CONTENT ================= -->
+  <g transform="translate(64, 48)">
+
+    <!-- Row 1: Logo Icon (80x80) + Badge Tag -->
+    <g transform="translate(0, 0)">
+      <!-- Mini Hero Icon (scaled cleanly) -->
+      <g transform="translate(0, -6) scale(0.18)">
+        <!-- Card 1 -->
+        <g transform="translate(16, 24)">
+          <rect width="180" height="124" rx="24" fill="url(#cardBg)" stroke="#3B82F6" stroke-width="8"/>
+          <path d="M74 36 L40 62 L74 88" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M106 36 L140 62 L106 88" fill="none" stroke="#60A5FA" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <!-- Card 2 -->
+        <g transform="translate(12, 178)">
+          <rect width="216" height="136" rx="24" fill="url(#cardBg)" stroke="#6366F1" stroke-width="8"/>
+          <rect x="28" y="32" width="56" height="16" rx="8" fill="#60A5FA"/>
+          <rect x="96" y="32" width="88" height="16" rx="8" fill="#FFFFFF"/>
+          <rect x="48" y="60" width="112" height="16" rx="8" fill="#E2E8F0"/>
+          <rect x="48" y="88" width="68" height="16" rx="8" fill="#38BDF8"/>
+        </g>
+        <!-- Card 3 -->
+        <g transform="translate(136, 342)">
+          <rect width="168" height="136" rx="24" fill="url(#cardBg)" stroke="#3B82F6" stroke-width="8"/>
+          <path d="M68 36 q-18 0 -18 16 v4 q0 12 -12 12 q12 0 12 12 v4 q0 16 18 16" fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M100 36 q18 0 18 16 v4 q0 12 12 12 q-12 0 -12 12 v4 q0 16 -18 16" fill="none" stroke="#60A5FA" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <!-- Wand -->
+        <g transform="rotate(45 330 250)">
+          <rect x="303" y="80" width="54" height="340" rx="27" fill="url(#wandShaft)"/>
+          <rect x="303" y="80" width="54" height="90" rx="27" fill="url(#wandTip)"/>
+          <rect x="299" y="240" width="62" height="18" rx="5" fill="#FBBF24" stroke="#D97706" stroke-width="2"/>
+          <rect x="303" y="265" width="54" height="155" rx="27" fill="url(#wandGrip)" stroke="#3B426B" stroke-width="3"/>
+        </g>
+        <!-- Starburst -->
+        <g transform="translate(400 130)">
+          <path d="M0 -72 L18 -18 L72 0 L18 18 L0 72 L-18 18 L-72 0 L-18 -18 Z" fill="url(#starGrad)"/>
+          <circle r="20" fill="#FFFFFF"/>
+        </g>
+      </g>
+
+      <!-- Badge next to icon -->
+      <g transform="translate(108, 20)">
+        <rect width="216" height="34" rx="17" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+        <circle cx="18" cy="17" r="5" fill="#10B981"/>
+        <text x="32" y="22.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#CBD5E1" letter-spacing="0.5">AST ENGINE • LUALS</text>
+      </g>
+    </g>
+
+    <!-- Row 2: Large Bold Title (font-size 52px) -->
+    <text x="0" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="52" font-weight="900" fill="url(#titleGrad)" letter-spacing="-1">
+      FiveM Lua Definitions
+    </text>
+
+    <!-- Row 3: Prominent Subtitle (font-size 22px) -->
+    <text x="0" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="500" fill="#E2E8F0">
+      Automate <tspan fill="#38BDF8" font-weight="700">.d.lua</tspan> type definitions for FiveM resources natively.
+    </text>
+
+    <!-- Row 4: Secondary Detail (font-size 17px) -->
+    <text x="0" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="400" fill="#94A3B8">
+      Extracts classes, enums, aliases, overloads &amp; dynamic exports.
+    </text>
+
+    <!-- Row 5: Feature Pills (font-size 15px) -->
+    <g transform="translate(0, 256)">
+      <!-- Pill 1: AST Parser -->
+      <g transform="translate(0, 0)">
+        <rect width="168" height="42" rx="12" fill="#172242" stroke="#2563EB" stroke-width="1.8"/>
+        <text x="18" y="26.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#93C5FD">⚡ AST Powered</text>
+      </g>
+
+      <!-- Pill 2: VS Code Ready -->
+      <g transform="translate(182, 0)">
+        <rect width="176" height="42" rx="12" fill="#1C1E4A" stroke="#4F46E5" stroke-width="1.8"/>
+        <text x="18" y="26.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#A5B4FC">🛠️ VS Code Ext</text>
+      </g>
+
+      <!-- Pill 3: Dynamic Exports -->
+      <g transform="translate(372, 0)">
+        <rect width="180" height="42" rx="12" fill="#201844" stroke="#7C3AED" stroke-width="1.8"/>
+        <text x="18" y="26.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#C4B5FD">📦 Auto Exports</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= RIGHT COLUMN: CODE PREVIEW CARD ================= -->
+  <g transform="translate(760, 42)">
+    <!-- Card Frame -->
+    <rect width="470" height="336" rx="20" fill="url(#codeCardBg)" stroke="#273255" stroke-width="2"/>
+
+    <!-- Window Header -->
+    <rect width="470" height="44" rx="20" fill="#1A2038"/>
+    <!-- Window buttons -->
+    <circle cx="24" cy="22" r="6" fill="#EF4444"/>
+    <circle cx="44" cy="22" r="6" fill="#F59E0B"/>
+    <circle cx="64" cy="22" r="6" fill="#10B981"/>
+    <!-- Tab title -->
+    <text x="88" y="27" font-family="'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace" font-size="14" font-weight="600" fill="#94A3B8">
+      definitions/exports.d.lua
+    </text>
+    <rect x="360" y="11" width="94" height="22" rx="6" fill="#2563EB" opacity="0.35"/>
+    <text x="372" y="26" font-family="sans-serif" font-size="11" font-weight="800" fill="#60A5FA" letter-spacing="0.5">GENERATED</text>
+
+    <!-- Code Content -->
+    <g transform="translate(24, 60)" font-family="'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace" font-size="14.5" letter-spacing="0.2">
+      <!-- Line 1: GetPlayerMoney params -->
+      <text y="10" fill="#64748B">---@param <tspan fill="#F8FAFC">src</tspan> <tspan fill="#22C55E">number</tspan></text>
+      <text y="30" fill="#64748B">---@return <tspan fill="#22C55E">number</tspan></text>
+      <text y="50" fill="#F43F5E">function <tspan fill="#E2E8F0">Exports:</tspan><tspan fill="#FBBF24">GetPlayerMoney</tspan><tspan fill="#E2E8F0">(src)</tspan> end</text>
+
+      <!-- Line 2: SetPlayerMoney params -->
+      <text y="85" fill="#64748B">---@param <tspan fill="#F8FAFC">src</tspan> <tspan fill="#22C55E">number</tspan></text>
+      <text y="105" fill="#64748B">---@param <tspan fill="#F8FAFC">amount</tspan> <tspan fill="#22C55E">number</tspan></text>
+      <text y="125" fill="#64748B">---@return <tspan fill="#22C55E">string</tspan></text>
+      <text y="145" fill="#F43F5E">function <tspan fill="#E2E8F0">Exports:</tspan><tspan fill="#FBBF24">SetPlayerMoney</tspan><tspan fill="#E2E8F0">(src, amount)</tspan> end</text>
+
+      <!-- Line 3: Export accessor -->
+      <text y="180" fill="#38BDF8">exports<tspan fill="#E2E8F0">.</tspan><tspan fill="#FBBF24">MyResource</tspan> <tspan fill="#94A3B8">=</tspan> <tspan fill="#E2E8F0">Exports</tspan></text>
+
+      <!-- Highlight border glow on completion -->
+      <g transform="translate(-6, 210)">
+        <rect width="434" height="44" rx="10" fill="#1E293B" stroke="#3B82F6" stroke-width="1.8" stroke-dasharray="5 3"/>
+        <text x="18" y="28" fill="#38BDF8" font-size="14" font-weight="700">✨ Full LuaLS IntelliSense Ready</text>
+      </g>
+    </g>
+  </g>
+</svg>

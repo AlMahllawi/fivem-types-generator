@@ -1,0 +1,79 @@
+{
+  "name": "fivem-lua-definitions",
+  "displayName": "FiveM Lua Definitions",
+  "publisher": "AlMahllawi",
+  "description": "Automate .d.lua generation for FiveM resources",
+  "version": "1.0.0",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlMahllawi/fivem-lua-definitions.git"
+  },
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "fivem",
+    "lua",
+    "generator",
+    "definitions",
+    "def",
+    "d.lua"
+  ],
+  "activationEvents": [
+    "workspaceContains:fxmanifest.lua",
+    "workspaceContains:__resource.lua"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "fivem.generateDefinitions",
+        "title": "FiveM: Generate Lua Definitions"
+      },
+      {
+        "command": "fivem.changeResourceName",
+        "title": "FiveM: Change Resource Name for Definitions"
+      },
+      {
+        "command": "fivem.changeOutputDir",
+        "title": "FiveM: Change Output Directory for Definitions"
+      },
+      {
+        "command": "fivem.showConfigurationMenu",
+        "title": "FiveM: Configure Lua Definitions"
+      },
+      {
+        "command": "fivem.syncDefinitions",
+        "title": "FiveM: Sync Lua Definitions"
+      }
+    ],
+    "configuration": {
+      "title": "FiveM Lua Definitions",
+      "properties": {
+        "fivemLuaDefinitions.generateOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically generate definitions when saving fxmanifest.lua or __resource.lua."
+        }
+      }
+    }
+  },
+  "extensionDependencies": [
+    "sumneko.lua"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "@types/vscode": "^1.74.0",
+    "typescript": "^5.0.0"
+  }
+}

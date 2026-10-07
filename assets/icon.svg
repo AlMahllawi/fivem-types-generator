@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="FiveM Lua Definitions">
+  <defs>
+    <!-- Soft wand tip glow that completely fades to 0 well before reaching canvas boundaries -->
+    <radialGradient id="wandGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.6"/>
+      <stop offset="40%" stop-color="#3B82F6" stop-opacity="0.25"/>
+      <stop offset="75%" stop-color="#3B82F6" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Code card background: rich deep indigo with high contrast -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E2337"/>
+      <stop offset="100%" stop-color="#121524"/>
+    </linearGradient>
+
+    <!-- Star Burst Gradient -->
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+
+    <!-- Wand gradients -->
+    <linearGradient id="wandShaft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="45%" stop-color="#64748B"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+
+    <linearGradient id="wandTip" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="50%" stop-color="#93C5FD"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+
+    <linearGradient id="wandGrip" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2038"/>
+      <stop offset="50%" stop-color="#2D325A"/>
+      <stop offset="100%" stop-color="#141628"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Wand tip magical glow: safely constrained so it fades smoothly to 0 with no border clipping -->
+  <circle cx="400" cy="130" r="100" fill="url(#wandGlow)"/>
+
+  <!-- Code Card 1: < > brackets (Top Left) -->
+  <g transform="translate(16, 24)">
+    <rect width="180" height="124" rx="24" fill="url(#cardBg)" stroke="#3B82F6" stroke-width="6"/>
+    <!-- Left bracket < -->
+    <path d="M74 36 L40 62 L74 88" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Right bracket > -->
+    <path d="M106 36 L140 62 L106 88" fill="none" stroke="#60A5FA" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Code Card 2: Definition lines (Center Left) -->
+  <g transform="translate(12, 178)">
+    <rect width="216" height="136" rx="24" fill="url(#cardBg)" stroke="#6366F1" stroke-width="6"/>
+    <!-- Line 1: Keyword + Type -->
+    <rect x="28" y="32" width="56" height="16" rx="8" fill="#60A5FA"/>
+    <rect x="96" y="32" width="88" height="16" rx="8" fill="#FFFFFF"/>
+    <!-- Line 2: Indented property -->
+    <rect x="48" y="60" width="112" height="16" rx="8" fill="#E2E8F0"/>
+    <!-- Line 3: Return type -->
+    <rect x="48" y="88" width="68" height="16" rx="8" fill="#38BDF8"/>
+  </g>
+
+  <!-- Code Card 3: Curly braces { } (Bottom Left) -->
+  <g transform="translate(136, 342)">
+    <rect width="168" height="136" rx="24" fill="url(#cardBg)" stroke="#3B82F6" stroke-width="6"/>
+    <!-- Left brace { -->
+    <path d="M68 36 q-18 0 -18 16 v4 q0 12 -12 12 q12 0 12 12 v4 q0 16 18 16" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Right brace } -->
+    <path d="M100 36 q18 0 18 16 v4 q0 12 12 12 q-12 0 -12 12 v4 q0 16 -18 16" fill="none" stroke="#60A5FA" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Magic Wand: prominent diagonal across right side -->
+  <g transform="rotate(45 330 250)">
+    <!-- Shaft -->
+    <rect x="303" y="80" width="54" height="340" rx="27" fill="url(#wandShaft)"/>
+    <!-- Tip -->
+    <rect x="303" y="80" width="54" height="90" rx="27" fill="url(#wandTip)"/>
+    <!-- Gold Accent Ring -->
+    <rect x="299" y="240" width="62" height="18" rx="5" fill="#FBBF24" stroke="#D97706" stroke-width="2"/>
+    <!-- Handle -->
+    <rect x="303" y="265" width="54" height="155" rx="27" fill="url(#wandGrip)" stroke="#3B426B" stroke-width="3"/>
+  </g>
+
+  <!-- Starburst at wand tip -->
+  <g transform="translate(400 130)">
+    <path d="M0 -72 L18 -18 L72 0 L18 18 L0 72 L-18 18 L-72 0 L-18 -18 Z" fill="url(#starGrad)"/>
+    <circle r="20" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Sparkles (sharp 4-point stars) -->
+  <path d="M470 42 l6 18 l18 6 l-18 6 l-6 18 l-6 -18 l-18 -6 l18 -6 z" fill="#60A5FA"/>
+  <path d="M280 34 l5 14 l14 5 l-14 5 l-5 14 l-5 -14 l-14 -5 l14 -5 z" fill="#93C5FD"/>
+  <path d="M472 230 l5 14 l14 5 l-14 5 l-5 14 l-5 -14 l-14 -5 l14 -5 z" fill="#38BDF8"/>
+
+  <!-- Energy trail particles linking wand to cards -->
+  <circle cx="270" cy="172" r="10" fill="#60A5FA"/>
+  <circle cx="240" cy="216" r="7.5" fill="#93C5FD"/>
+  <circle cx="258" cy="116" r="8.5" fill="#60A5FA"/>
+  <circle cx="332" cy="326" r="8" fill="#38BDF8"/>
+</svg>
